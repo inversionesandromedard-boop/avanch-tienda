@@ -230,11 +230,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       <span style="color:var(--muted);font-size:13px">🔍</span>
       <input type="text" id="search-input" placeholder="Buscar producto..." oninput="filtrar()">
     </div>
-<a href="https://komultipos.com/" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--muted2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue2)';this.style.color='var(--blue3)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted2)'">
-  🔐 Acceder al sistema
-</a>      🛒 Carrito
+<div class="nav-right">
+    <div class="nav-search">
+      <span style="color:var(--muted);font-size:13px">🔍</span>
+      <input type="text" id="search-input" placeholder="Buscar producto..." oninput="filtrar()">
+    </div>
+    <a href="https://komultipos.com/" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--muted2);text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:all .2s" onmouseover="this.style.borderColor='#3b82f6';this.style.color='#60a5fa'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)';this.style.color='#a0a8bc'">🔐 Acceder al sistema</a>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Carrito
       <span class="cart-count" id="cart-count">0</span>
     </button>
+  </div>
   </div>
 </nav>
 
