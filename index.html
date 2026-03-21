@@ -364,9 +364,24 @@ function cargarTasa() {
     });
 }
 
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbx7Jep-_oIhdVLj8shN5CAbuJChbeGfnNqfDoBWNV5AL_lIm2x5fAh1O3UP8ofuxKU2/exec';
+
 function cargarProductos() {
   document.getElementById('products-grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)"><div style="font-size:2rem;margin-bottom:12px">⏳</div>Cargando productos...</div>';
-  cargarDemoProductos();
+  fetch(GAS_URL + '?action=getInventario')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d && d.productos && d.productos.length) {
+        d.productos.forEach(function(p){ p.icon = getIcon(p.categoria); });
+        todos = d.productos;
+        construirFiltros(todos);
+        filtrados = todos;
+        renderProductos(todos);
+      } else {
+        cargarDemoProductos();
+      }
+    })
+    .catch(function(){ cargarDemoProductos(); });
 }
 
 function cargarDemoProductos() {
